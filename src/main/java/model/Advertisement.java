@@ -8,12 +8,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @AllArgsConstructor
-@DynamicInsert
-@DynamicUpdate
+
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
 @ToString
+@Table(name = "advertisement")
 @Entity
 public class Advertisement {
 

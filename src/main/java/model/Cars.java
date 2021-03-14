@@ -20,6 +20,7 @@ public class Cars {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     private String model;
     private String typeCarBody;
     private String color;
