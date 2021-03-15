@@ -12,10 +12,10 @@
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
-        <mapping class="model.Advertisement"/>
-        <mapping class="model.Cars"/>
-        <mapping class="model.Users"/>
 
+        <mapping class="model.Advertisement"/>
+        <mapping class="model.Users"/>
+        <mapping class="model.Cars"/>
 
 
     </session-factory>

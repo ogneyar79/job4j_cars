@@ -2,23 +2,19 @@ package persictence;
 
 import model.Advertisement;
 import model.candidates.ConnectorBase;
+import org.apache.logging.log4j.core.parser.ParseException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Collection;
-import java.util.Date;
 import java.util.function.Function;
 
 public class AdvertWorker implements DAO<Advertisement> {
+
 
     @Override
     public Advertisement add(Advertisement model) {
@@ -80,7 +76,8 @@ public class AdvertWorker implements DAO<Advertisement> {
     }
 
     public Collection<Advertisement> allHaveByModel(String model) {
-       return null;
+        return makeTransaction(session -> session.createQuery("from Advertisement a where a.car.model= :mod")
+                .setParameter("mod", model).list());
     }
 
 

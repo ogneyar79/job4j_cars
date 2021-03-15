@@ -5,29 +5,42 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-@AllArgsConstructor
 
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-@ToString
+@ToString(of = "name", includeFieldNames = false)
 @Table(name = "advertisement")
-@Entity
-public class Advertisement {
+public class Advertisement implements Serializable {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
+
+
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private Users idUser;
+
+    @OneToOne
+    @JoinColumn(name = "id_car")
+    private Cars car;
+
+
     private String photo;
     private Timestamp published;
     private String description;
     private Boolean status;
 
 
-    public Advertisement() {
-
-    }
 }

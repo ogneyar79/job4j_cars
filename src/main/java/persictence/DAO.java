@@ -1,6 +1,5 @@
 package persictence;
 
-
 import java.util.Collection;
 
 public interface DAO <T> extends AutoCloseable {
